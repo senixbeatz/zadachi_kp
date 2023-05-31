@@ -1,23 +1,25 @@
-// Самостоятельная продвинутый 1, задача 1
+//сам раб 4 прод №1
 
 #include <iostream>
+
 #include <cmath>
+
 using namespace std;
 
-int main() {
-    double V, T, a;
-    const double g = 9.8; 
-    cout << "Введите начальную скорость V: ";
-    cin >> V;
-    cout << "Введите время полета T: ";
-    cin >> T;
+int main()
 
-    a = asin(g * T / (2 * V));
+{
 
-    a = a * 180 / M_PI;
+int a1, a2, a3;
 
-    cout << "Угол броска: " << a << " градусов." << endl;
+cout « "Enter components of vector a: ";
 
-    return 0;
+cin » a1 » a2 » a3;
+
+double mod = sqrt(pow(a1, 2) + pow(a2, 2) + pow(a3, 2));
+
+cout « "The modulus of vector a is: " « mod « endl;
+
+return 0;
+
 }
-
