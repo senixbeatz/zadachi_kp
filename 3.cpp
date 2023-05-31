@@ -1,41 +1,44 @@
-//самостоятельная продвинутый 1, №3
+// сам раб 5 прод 3
 
 #include <iostream>
 
 #include <cmath>
 
-const double g = 9.8; // Ускорение свободного падения (м/с^2)
+using namespace std;
 
-void calculateInitialVelocityAndAngle(double H, double L, double& V, double& alpha) {
+const int MAX_ITERATIONS = 10;
 
-double alphaRad = atan(4 * H / L); // Угол альфа в радианах
+double cos(double x) {
 
-alpha = alphaRad * 180 / M_PI; // Угол альфа в градусах
+    double result = 1;
 
-V = sqrt(g * L / sin(2 * alphaRad));
+    double term = 1; 
+
+    for (int n = 1; n <= MAX_ITERATIONS; n++) {
+
+        term *= -1 * x * x / ((2 * n - 1) * (2 * n));
+
+        result += term;
+
+    }
+
+    return result;
 
 }
+
+
 
 int main() {
 
-double H, L;
+    double x;
 
-std::cout << "Введите максимальную высоту подъема (H): ";
+    cout << "Enter x value: ";
 
-std::cin >> H;
+    cin >> x;
 
-std::cout << "Введите дальность полета (L): ";
+    cout << "cos(" << x << ") = " << cos(x) << endl;
 
-std::cin >> L;
-
-double V, alpha;
-
-calculateInitialVelocityAndAngle(H, L, V, alpha);
-
-std::cout << "Начальная скорость (V): " << V << " м/с" << std::endl;
-
-std::cout << "Угол альфа: " << alpha << " градусов" << std::endl;
-
-return 0;
+    return 0;
 
 }
+

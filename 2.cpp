@@ -1,20 +1,32 @@
-// сам.раб. 3 прод 2 
+// сам раб прод 5 2
 
 #include <iostream>
 #include <cmath>
 using namespace std;
 
+const int LIMIT = 10; // граница ряда
+
+double sin(double x) {
+double sum = 0;
+int sign = 1;
+double term = x;
+int fact = 1;
+double power = x;
+for(int i = 0; i < LIMIT; i++) {
+    sum += sign * term;
+    sign *= -1;
+    power *= x*x;
+    fact *= (2*i+2)*(2*i+3);
+    term = power/fact;
+}
+
+return sum;
+}
+
 int main() {
-    const int n = 10; 
-    double x, result = 1.0;
-    cout << "Введите аргумент: ";
-    cin >> x;
-
-    for (int i = 1; i <= n; i++) {
-        double term = pow(x, i) / tgamma(i+1); 
-        result += term; 
-    }
-
-    cout << "e^" << x << " = " << result;
-    return 0;
+cout << "Enter argument x in radians: ";
+double x;
+cin >> x;
+cout << "sin(" << x << ") = " << sin(x) << endl;
+return 0;
 }

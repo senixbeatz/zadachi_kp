@@ -1,26 +1,46 @@
-//сам раб 1 прод 17
+//самостоятельная прод 4, №17
+
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-int main() 
-{
-    double v, V, me, h, A;
-    me = 9.1e-31; 
-    h = 6.626e-34; 
-
-    cout << "Введите частоту фотона (в Гц): ";
-    cin >> v;
-    cout << "Введите скорость электрона на выходе (в м/с): ";
-    cin >> V;
-
-    if (h * v < me * pow(V, 2) / 2) {
-        cout << "Ошибка: введены некорректные значения v и V" << endl;
-        return 0;
+double f(double x, double* a, int n) {
+    double result = 0;
+    for (int i = 0; i < n; i++) {
+        result += a[i] * pow(x, i+1);
     }
-    else {
-        A = h * v - me * pow(V, 2) / 2; 
-        cout << "Работа электрона: " << A << " Дж" << endl;
-        return 0;
+    return result;
+}
+
+double df(double x, double* a, int n) {
+    double result = 0;
+    for (int i = 0; i < n-1; i++) {
+        result += (i+1) * a[i] * pow(x, i);
     }
+    return result;
+}
+
+int main() {
+    int n;
+    cout << "Введите степень полинома: ";
+    cin >> n;
+    double a[n];
+    cout << "Введите коэффициенты полинома: ";
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    double x0;
+    cout << "Введите начальную точку: ";
+    cin >> x0;
+    double eps;
+    cout << "Введите точность: ";
+    cin >> eps;
+    double x = x0;
+    double delta;
+    do {
+        delta = f(x, a, n) / df(x, a, n);
+        x -= delta;
+    } while (abs(delta) > eps);
+    cout << "Корень уравнения: " << x << endl;
+    return 0;
 }

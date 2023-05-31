@@ -1,24 +1,34 @@
-//сам раб 4 прод №1
+//сам раб 5 прод 1
 
 #include <iostream>
 
-#include <cmath>
+int fibonacci(int n) {
 
-using namespace std;
+if (n == 0) {
 
-int main()
+return 0;
 
-{
+} else if (n == 1) {
 
-int a1, a2, a3;
+return 1;
 
-cout « "Enter components of vector a: ";
+} else {
 
-cin » a1 » a2 » a3;
+return fibonacci(n-1) + fibonacci(n-2);
 
-double mod = sqrt(pow(a1, 2) + pow(a2, 2) + pow(a3, 2));
+}
 
-cout « "The modulus of vector a is: " « mod « endl;
+}
+
+int main() {
+
+int n;
+
+std::cout << "Введите порядковый номер числа в последовательности Фибоначчи: ";
+
+std::cin >> n;
+
+std::cout << "Число Фибоначчи с порядковым номером " << n << " равно " << fibonacci(n) << std::endl;
 
 return 0;
 

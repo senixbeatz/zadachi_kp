@@ -1,24 +1,28 @@
-// самостоятельная работа 2 продвинутый №13
-
+//самостоятельная продвинутая 5, 13
 
 #include <iostream>
 #include <cmath>
 using namespace std;
 
+double rms(double arr[], int n, int start = 0, int end = -1)
+{
+    if (end == -1) 
+    {
+        end = n;
+    }
+    double sum = 0;
+    for (int i = start; i < end; i++) 
+    {
+        sum += pow(arr[i], 2);
+    }
+    return sqrt(sum / (end - start));
+}
+
 int main() 
 {
-    double alpha, a;
-    cout << "Введите угол наклона плоскости (в градусах): ";
-    cin >> alpha;
-    cout << "Введите ускорение тела: ";
-    cin >> a;
-
-    double g = 9.81; 
-    double sin_alpha = sin(alpha * M_PI / 180); 
-    double cos_alpha = cos(alpha * M_PI / 180);
-    double u = (g * sin_alpha - a) / (g * cos_alpha);
-
-    cout << "Коэффициент трения: " << u << endl;
-
+    const int SIZE = 5;
+    double arr[SIZE] = {1, 2, 3, 4, 5};
+    cout << "Среднеквадратичное значение для всего массива: " << rms(arr, SIZE) << endl;
+    cout << "Среднеквадратичное значение для первых трех элементов: " << rms(arr, SIZE, 0, 3) << endl;
     return 0;
 }

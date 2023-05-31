@@ -1,22 +1,26 @@
-//6, занятие3
+//6, занятие4
 #include <iostream>
 #include <cmath>
 using namespace std;
 int main()
 {
-	float x, i , j;
-	cin >> x;
-	int n = 10;
-	float t = 0;
-	float f = 1;
-	for (i = 0; i <= n; i++)
+	int i;
+	int a[10];
+
+	for (i = 0; i < 10; i++)
 	{
-		t += pow(-1, i)* pow(x, 2 * n) / f;
-		f = 1;
-		for (j = 0; j <= i; j++) 
-		{
-			f *= 2 * i + 1;
-		}
+		cin >> a[i];
+		
 	}
-	cout << t;
+	int m = a[0];
+	for (i = 0; i < 9; i++)
+	{
+		if (a[i] < a[i + 1])
+		{
+			m = a[i+1];
+		}
+
+	}
+	cout << m;
+
 }

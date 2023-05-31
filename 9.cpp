@@ -1,22 +1,45 @@
+//Самостоятельная работа продвинутая задача 9
 
-//сам раб 3 прод 9
 #include <iostream>
-#include <cmath>
-using namespace std;
 
-int main() 
-{
-    int n;
-    double product = 1.0;
+double calculateDotProduct(const double* vector1, const double* vector2, int size) {
 
-    cout << "Введите верхнюю границу произведения: ";
-    cin >> n;
+double dotProduct = 0.0;
 
-    for (int i = 1; i <= n; i++) {
-        product *= cos((2*i+1)*M_PI/2);
-    }
+for (int i = 0; i < size; i++) {
 
-    cout << "Произведение: " << product << endl;
+dotProduct += vector1[i] * vector2[i];
 
-    return 0;
+}
+
+return dotProduct;
+
+}
+
+int main() {
+
+// Пример использования функции calculateDotProduct
+
+// Вектор 1: [1, 2, 3]
+
+double vector1[] = {1.0, 2.0, 3.0};
+
+int size1 = sizeof(vector1) / sizeof(vector1[0]);
+
+// Вектор 2: [4, 5, 6]
+
+double vector2[] = {4.0, 5.0, 6.0};
+
+int size2 = sizeof(vector2) / sizeof(vector2[0]);
+
+// Вычисление скалярного произведения
+
+double dotProduct = calculateDotProduct(vector1, vector2, std::min(size1, size2));
+
+// Вывод результата
+
+std::cout << "Скалярное произведение: " << dotProduct << std::endl;
+
+return 0;
+
 }
